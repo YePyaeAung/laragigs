@@ -4,6 +4,6 @@
             >
                 <!-- Item 1 -->
                 @foreach ($listings as $listing)
-                    <x-item :listing="$listing"/>
+                    <x-card :listing="$listing"/>
                 @endforeach
             </div>
