@@ -50,7 +50,7 @@ class ListingController extends Controller
     public function update(Listing $listing)
     {
         $listsUpdateData = request()->validate([
-            'company' => ['required', Rule::unique('listings', 'company')],
+            'company' => ['required'],
             'title' => ['required'],
             'location' => ['required'],
             'email' => ['required', 'email'],
