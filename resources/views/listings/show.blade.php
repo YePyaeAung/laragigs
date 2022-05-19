@@ -37,6 +37,11 @@
                             </a>
                         </div>
                     </div>
+                    <x-card-wrapper class="mt-4 p-2 flex space-x-6">
+                        <a href="/lists/{{$listing->id}}/edit">
+                            <i class="fa-solid fa-pencil"></i> Edit
+                        </a>
+                    </x-card-wrapper>
                 </div>
             </x-card-wrapper>
         </div>
