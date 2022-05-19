@@ -35,6 +35,9 @@ class ListingController extends Controller
             'tags' => ['required'],
             'description' => ['required'],
         ]);
+        if(request()->hasFile('logo')) {
+            $listsStoreData['logo'] = request()->file('logo')->store('logos', 'public');
+        }
         Listing::create($listsStoreData);
         return redirect('/')->with('flashMessage', "List Created Successfully!");
     }
