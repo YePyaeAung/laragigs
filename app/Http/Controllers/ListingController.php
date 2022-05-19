@@ -64,4 +64,9 @@ class ListingController extends Controller
         $listing->update($listsUpdateData);
         return redirect('/')->with('flashMessage', "List Updated Successfully!");
     }
+    public function destroy(Listing $listing)
+    {
+        $listing->delete();
+        return redirect('/')->with('flashMessage', "List Deleted Sucessfully!");
+    }
 }

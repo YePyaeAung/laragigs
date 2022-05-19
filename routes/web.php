@@ -20,6 +20,7 @@ Route::get('/lists/create', [ ListingController::class, 'create']);
 Route::post('/lists/store', [ ListingController::class, 'store']);
 Route::get('/lists/{listing}/edit', [ ListingController::class, 'edit']);
 Route::put('/lists/{listing}/update', [ ListingController::class, 'update']);
+Route::delete('/lists/{listing}/delete', [ ListingController::class, 'destroy']);
 
 Route::get('/lists/{listing}', [ ListingController::class, 'show']);
 
