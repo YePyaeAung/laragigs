@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -38,6 +39,7 @@ class ListingController extends Controller
         if(request()->hasFile('logo')) {
             $listsStoreData['logo'] = request()->file('logo')->store('logos', 'public');
         }
+        $listsStoreData['user_id'] = auth()->id();
         Listing::create($listsStoreData);
         return redirect('/')->with('flashMessage', "List Created Successfully!");
     }
@@ -68,5 +70,12 @@ class ListingController extends Controller
     {
         $listing->delete();
         return redirect('/')->with('flashMessage', "List Deleted Sucessfully!");
+    }
+    public function manage()
+    {
+        return view('listings.manage', [
+            // 'listings' => auth()->user()->listings()->get() {{--<<Same>>--}}
+            'listings' => User::find(auth()->id())->listings()->get()
+        ]);
     }
 }

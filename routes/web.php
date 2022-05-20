@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ ListingController::class, 'index']);
 Route::get('/lists/create', [ ListingController::class, 'create'])->middleware('auth');
 Route::post('/lists/store', [ ListingController::class, 'store'])->middleware('auth');
+Route::get('/lists/manage', [ ListingController::class, 'manage'])->middleware('auth');
 Route::get('/lists/{listing}/edit', [ ListingController::class, 'edit'])->middleware('auth');
 Route::put('/lists/{listing}/update', [ ListingController::class, 'update'])->middleware('auth');
 Route::delete('/lists/{listing}/delete', [ ListingController::class, 'destroy'])->middleware('auth');
