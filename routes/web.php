@@ -21,7 +21,10 @@ Route::post('/lists/store', [ ListingController::class, 'store']);
 Route::get('/lists/{listing}/edit', [ ListingController::class, 'edit']);
 Route::put('/lists/{listing}/update', [ ListingController::class, 'update']);
 Route::delete('/lists/{listing}/delete', [ ListingController::class, 'destroy']);
-
 Route::get('/lists/{listing}', [ ListingController::class, 'show']);
 
-Route::get('/login', [ AuthController::class, 'login' ]);
+Route::get('/auth/register', [ AuthController::class, 'create' ]);
+Route::post('/auth/register', [ AuthController::class, 'store' ]);
+Route::get('/auth/login', [ AuthController::class, 'login' ]);
+Route::post('/auth/login', [ AuthController::class, 'postLogin' ]);
+Route::post('/auth/logout', [ AuthController::class, 'logout' ]);

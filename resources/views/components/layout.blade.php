@@ -33,17 +33,31 @@
                 ><img class="w-24" src="images/logo.png" alt="" class="logo"
             /></a>
             <ul class="flex space-x-6 mr-6 text-lg">
-                <li>
-                    <a href="register.html" class="hover:text-laravel"
-                        ><i class="fa-solid fa-user-plus"></i> Register</a
-                    >
-                </li>
-                <li>
-                    <a href="/login" class="hover:text-laravel"
-                        ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        Login</a
-                    >
-                </li>
+                @auth
+                    <li>
+                        <span class="font-bold uppercase">Welcome {{auth()->user()->name}}</span>
+                    </li>
+                    <li>
+                        <a href="/lists/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Lists</a>
+                    </li>
+                    <li>
+                        <form class="inline" action="/auth/logout" method="POST">
+                            @csrf
+                            <button type="submit">
+                                <i class="fa-solid fa-door-closed"></i> Logout
+                            </button>
+                        </form>
+                    </li>
+                @endauth
+                
+                @guest
+                    <li>
+                        <a href="/auth/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    </li>
+                    <li>
+                        <a href="/auth/login" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>Login</a>
+                    </li>
+                @endguest
             </ul>
         </nav>
     {{$slot}}
