@@ -41,6 +41,11 @@
                         <a href="/lists/{{$listing->id}}/edit">
                             <i class="fa-solid fa-pencil"></i> Edit
                         </a>
+                        <form action="/lists/{{$listing->id}}/delete" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+                        </form>
                     </x-card-wrapper>
                 </div>
             </x-card-wrapper>

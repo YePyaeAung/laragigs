@@ -50,7 +50,7 @@ class ListingController extends Controller
     public function update(Listing $listing)
     {
         $listsUpdateData = request()->validate([
-            'company' => ['required', Rule::unique('listings', 'company')],
+            'company' => ['required'],
             'title' => ['required'],
             'location' => ['required'],
             'email' => ['required', 'email'],
@@ -63,5 +63,10 @@ class ListingController extends Controller
         }
         $listing->update($listsUpdateData);
         return redirect('/')->with('flashMessage', "List Updated Successfully!");
+    }
+    public function destroy(Listing $listing)
+    {
+        $listing->delete();
+        return redirect('/')->with('flashMessage', "List Deleted Sucessfully!");
     }
 }
