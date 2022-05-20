@@ -58,4 +58,10 @@ class User extends Authenticatable
             set: fn ($value) => bcrypt($value),
         );
     }
+
+    // RelationShip with Listing
+    public function listings()
+    {
+        return $this->hasMany(Listing::class);
+    }
 }
